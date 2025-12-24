@@ -3,7 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Markdown Editor</title>
+    
+    <title>Modern Markdown Editor | Free Live Preview Tool by Vikram Kumar Sinha</title>
+    <meta name="description" content="A free, modern, and responsive online Markdown Editor with live preview. Built by Vikram Kumar Sinha for developers and writers. Features syntax highlighting, GitHub styling, and instant copy.">
+    <meta name="keywords" content="Markdown Editor, Online Markdown Viewer, Live Preview, GitHub Flavored Markdown, Vikram Kumar Sinha, Web Developer Tool, Free Markdown Tool, HTML Converter">
+    <meta name="author" content="Vikram Kumar Sinha">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vikramkumarsinha.github.io/modern-markdown-editor/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vikramkumarsinha.github.io/modern-markdown-editor/">
+    <meta property="og:title" content="Modern Markdown Editor by Vikram Kumar Sinha">
+    <meta property="og:description" content="Write, preview, and export Markdown instantly. The cleanest free editor for developers.">
+    <meta property="og:image" content="https://vikramkumarsinha.github.io/modern-markdown-editor/banner.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@vikramkumarsinha"> <meta name="twitter:title" content="Modern Markdown Editor">
+    <meta name="twitter:description" content="A powerful, free markdown editor with live preview. Created by Vikram Kumar Sinha.">
+    <meta name="twitter:image" content="https://vikramkumarsinha.github.io/modern-markdown-editor/banner.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Modern Markdown Editor",
+      "operatingSystem": "Web",
+      "applicationCategory": "DeveloperApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Vikram Kumar Sinha"
+      },
+      "description": "A browser-based Markdown editor with live preview and syntax highlighting.",
+      "featureList": "Live Preview, GitHub Styling, Syntax Highlighting, Export to HTML, Mobile Responsive"
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,6 +87,7 @@
 
         .header-left { display: flex; align-items: center; gap: 20px; }
         h1 { margin: 0; font-size: 18px; font-weight: 600; color: var(--text-main); }
+        .author-tag { font-size: 12px; color: #6b7280; font-weight: 400; margin-left: 5px;}
 
         /* COPY BUTTON */
         .copy-btn {
@@ -68,7 +107,6 @@
         .copy-btn:hover { background-color: #f9fafb; border-color: #9ca3af; }
         .copy-btn:active { transform: scale(0.98); }
 
-        /* Success state for copy button */
         .copy-btn.success {
             background-color: #ecfdf5;
             color: #059669;
@@ -180,7 +218,6 @@
         .modal-body { padding: 0 20px 20px 20px; overflow-y: auto; }
         .modal-close { cursor: pointer; font-size: 24px; color: #9ca3af; }
         
-        /* Modal Table */
         table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 20px;}
         th { text-align: left; color: #6b7280; padding: 10px; border-bottom: 2px solid var(--border); position: sticky; top: 0; background: white; }
         td { padding: 12px 10px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: top;}
@@ -188,7 +225,6 @@
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .mobile-tabs { display: flex; }
             h1 { display: none; }
@@ -197,7 +233,7 @@
             .hidden-panel { visibility: hidden; opacity: 0; z-index: 0; }
             .active-panel { visibility: visible; opacity: 1; z-index: 1; }
             #editor, #preview { padding: 20px; border-right: none; }
-            .copy-btn span { display: none; } /* Hide text on small screens, show icon only */
+            .copy-btn span { display: none; }
             .copy-btn { padding: 8px; }
         }
     </style>
@@ -206,7 +242,10 @@
 
     <header>
         <div class="header-left">
-            <h1>Markdown Editor</h1>
+            <div>
+                <h1>Modern Markdown Editor</h1>
+                <span class="author-tag">by Vikram Kumar Sinha</span>
+            </div>
             <div class="mobile-tabs">
                 <button class="tab-btn active" onclick="switchTab('editor')">Edit</button>
                 <button class="tab-btn" onclick="switchTab('preview')">Preview</button>
@@ -283,22 +322,18 @@
 
         editor.addEventListener('input', render);
 
-        // DEFAULT CONTENT
-        editor.value = "# Hello World\n\nThis is a **modern** markdown editor.\n\n## Features:\n- [x] Responsive Design\n- [x] Live Preview\n- [x] Copy Button added!\n\n```javascript\n// Try writing some code!\nconsole.log('It updates instantly');\n```";
+        // DEFAULT CONTENT - Optimized for new visitors
+        editor.value = "# Welcome to Modern Markdown Editor\n\nThis is a free tool created by **Vikram Kumar Sinha**.\n\n## Features\n- [x] Live Preview\n- [x] Syntax Highlighting\n- [x] SEO Optimized\n- [ ] You can add more tasks here\n\n```javascript\n// Copy your code easily\nconsole.log('Happy Coding!');\n```";
         render();
 
-        // COPY FUNCTIONALITY
         function copyMarkdown() {
             const copyBtn = document.getElementById('copyBtn');
             const originalText = copyBtn.innerHTML;
             
-            // Select text
             editor.select();
-            editor.setSelectionRange(0, 99999); /* For mobile devices */
+            editor.setSelectionRange(0, 99999); 
             
-            // Copy to clipboard
             navigator.clipboard.writeText(editor.value).then(() => {
-                // Visual Feedback
                 copyBtn.classList.add('success');
                 copyBtn.innerHTML = `
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -307,7 +342,6 @@
                     <span>Copied!</span>
                 `;
                 
-                // Revert after 2 seconds
                 setTimeout(() => {
                     copyBtn.classList.remove('success');
                     copyBtn.innerHTML = originalText;
@@ -315,7 +349,6 @@
             });
         }
 
-        // TABS & MODAL LOGIC
         function switchTab(mode) {
             const editorPanel = document.getElementById('editor');
             const previewPanel = document.getElementById('preview');
